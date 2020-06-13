@@ -29,6 +29,7 @@ namespace ExtraExplosives.Projectiles.PrismBomb
         public override void Kill(int timeleft)
         { Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("PrismBombPrism"), projectile.damage, 0f, projectile.owner);
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("PrismExplosion"), projectile.damage, 0f, projectile.owner);
+            Main.PlaySound(SoundID.DD2_ExplosiveTrapExplode, projectile.Center);
         }
 
 

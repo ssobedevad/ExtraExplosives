@@ -26,7 +26,7 @@ namespace ExtraExplosives.Projectiles.PrismBomb //Namespace is set this way as p
     public class PrismBombPrism : ModProjectile
     {
         public int laser1, laser2, laser3, laser4 = -1;
-        
+        public int soundDelay;
         private bool resetBatchInPost;
         public override void SetDefaults()
         {
@@ -43,10 +43,10 @@ namespace ExtraExplosives.Projectiles.PrismBomb //Namespace is set this way as p
         }
         public override void AI()
         {
-            
+            if (soundDelay > 0) { soundDelay -= 1; }
             projectile.ai[1] += 1;
             if (projectile.ai[0] <= 80) { projectile.velocity.Y = -3f;projectile.velocity.X = 0;projectile.ai[0] += 1; }
-            else if (projectile.ai[0] > 80) { projectile.velocity.Y = 0; projectile.velocity.X = 0; projectile.rotation += 0.02f; }
+            else if (projectile.ai[0] > 80) { projectile.velocity.Y = 0; projectile.velocity.X = 0; projectile.rotation += 0.02f;if (soundDelay <= 0) { Main.PlaySound(SoundID.Item15, projectile.Center); soundDelay = 20; } }
             if( laser1 == -1 && projectile.ai[0] > 80)
             { 
             

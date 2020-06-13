@@ -117,8 +117,8 @@ namespace ExtraExplosives.Projectiles.PrismBomb
         // The AI of the projectile
         public override void AI()
         {
-          
-           
+
+            
             projectile.velocity = Rotate(projectile.velocity, ROTATION_SPEED);
             CheckKill();
             SpawnDusts();
